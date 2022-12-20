@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JsData extends Model
 {
     protected $fillable=['data'];
+    protected $casts = [
+        'data' => 'array',
+    ];
 }
