@@ -20,3 +20,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/json-store', [App\Http\Controllers\JsonStoreController::class, 'storeJson'])->middleware('auth:sanctum');
+Route::post('/json-store', [App\Http\Controllers\JsonStoreController::class, 'storeJson'])->middleware('auth:sanctum');
