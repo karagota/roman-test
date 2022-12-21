@@ -12,11 +12,10 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        {{ __('You are logged in!') }}
                         <h1>Edit Json</h1>
 
-                            <form action="/admin/{{$id}}/save">
+                            <form method="POST" action="/admin/{{$id}}/save">
+                                @csrf
                             <div>
                                 <textarea name="data">
                                     {{$jsData}}

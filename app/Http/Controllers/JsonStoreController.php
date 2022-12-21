@@ -26,11 +26,12 @@ class JsonStoreController extends Controller
      */
     public function index(Request $request)
     {
+        return view('store');
     }
 
 
     public function storeJson(Request $request) {
-        $jsData = JsData::create(['data' => $request->input('data')]);
+        $jsData = JsData::create(['data' => json_decode($request->data)]);
         return json_encode(['id'=>$jsData->id,'memory'=>round(memory_get_peak_usage() / 1024)." KB",'time'=>round(microtime(true) - LARAVEL_START).' sec']);
     }
 }

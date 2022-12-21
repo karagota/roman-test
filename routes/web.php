@@ -20,11 +20,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::any('/json-store', [App\Http\Controllers\JsonStoreController::class, 'storeJson'])->middleware('auth:sanctum');
+Route::get('/json', [App\Http\Controllers\JsonStoreController::class, 'index']);//->middleware('auth:sanctum');
+Route::any('/json/save', [App\Http\Controllers\JsonStoreController::class, 'storeJson']);//->middleware('auth:sanctum');
 
 Route::get('/admin',  [App\Http\Controllers\AdminController::class, 'index'])->name('admin');
 
 Route::get('/admin/{jsData}/delete',   [App\Http\Controllers\AdminController::class, 'delete']);
 Route::get('/admin/{jsData}/edit',   [App\Http\Controllers\AdminController::class, 'edit']);
-Route::get('/admin/{jsData}/save',   [App\Http\Controllers\AdminController::class, 'save']);
+Route::any('/admin/{jsData}/save',   [App\Http\Controllers\AdminController::class, 'save']);

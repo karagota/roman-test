@@ -12,66 +12,82 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.css" rel="stylesheet" type="text/css"/>
+<style>
+    summary {
+        display: block;
+        cursor: pointer;
+        outline: 0;
+    }
 
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .tree-nav__item {
+        display: block;
+        white-space: nowrap;
+        position: relative;
+    }
+    .tree-nav__item.is-expandable::before {
+        content: "";
+        height: 100%;
+        left: 0.8rem;
+        position: absolute;
+        top: 2.4rem;
+        height: calc(100% - 2.4rem);
+    }
+    .tree-nav__item .tree-nav__item {
+        margin-left: 2.4rem;
+    }
+    .tree-nav__item.is-expandable[open] > .tree-nav__item-title::before {
+        font-family: "ionicons";
+        transform: rotate(90deg);
+    }
+    .tree-nav__item.is-expandable > .tree-nav__item-title {
+        padding-left: 2.4rem;
+    }
+    .tree-nav__item.is-expandable > .tree-nav__item-title::before {
+        position: absolute;
+        will-change: transform;
+        transition: transform 300ms ease;
+        font-family: "ionicons";
+        content: "\f125";
+        left: 0;
+        display: inline-block;
+        width: 1.6rem;
+        text-align: center;
+    }
+
+    .tree-nav__item-title {
+        cursor: pointer;
+        display: block;
+        outline: 0;
+    }
+    .tree-nav__item-title .icon {
+        display: inline;
+        padding-left: 1.6rem;
+        margin-right: 0.8rem;
+        position: relative;
+    }
+    .tree-nav__item-title .icon::before {
+        top: 0;
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        width: 1.6rem;
+        text-align: center;
+    }
+
+    .tree-nav__item-title::-webkit-details-marker {
+        display: none;
+    }
+</style>
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
