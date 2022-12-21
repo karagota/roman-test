@@ -14,7 +14,7 @@ class AuthToken extends Command
      *
      * @var string
      */
-    protected $signature = 'get-token' .
+    protected $signature = 'get-token ' .
     '{login : login} ' .
     '{password : password}';
 
