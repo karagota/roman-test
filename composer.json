@@ -24,6 +24,10 @@
     "autoload": {
         "psr-4": {
             "App\\": "app/",
+            "Frontend\\": "frontend/",
+            "Backend\\": "backend/",
+            "Common\\": "common/",
+            "Console\\": "console/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
